@@ -17,6 +17,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
   <!-- Place favicon.ico in the root directory -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="./css/main.css">
 
   <meta name="theme-color" content="#fafafa">
@@ -29,7 +33,7 @@
       <img src="img/A_logo.png" alt="Abhishek">
     </div>
     <div class="navbar_links">
-      <a href="#home" class="navbar_link">Home</a>
+      <a href="#home" class="navbar_link navbar_link--active">Home</a>
       <a href="#about" class="navbar_link">About</a>
       <a href="#projects" class="navbar_link">Projects</a>
       <a href="#contact" class="navbar_link">Contact</a>
@@ -37,21 +41,87 @@
   </nav>
   <header class="header">
     <div class="header_text">
-      <h1 class="header_text-title">Hi,<br> I am<br> Abhishek</h1>
+      <h1 class="header_text-title"><img src="img/hello.svg" alt="Hello" class="header_text-title--image"/>
+        <span>,</span><br> <span style="font-weight: initial;font-style: italic">I am</span><br> Abhishek</h1>
     </div>
     <div class="header_image">
-      <img src="img/Hi.jpg" alt="Header_img">
+      <img src="img/hi_character.svg" alt="Header_img" class="header_image--svg"/>
     </div>
   </header>
+  <svg xmlns="http://www.w3.org/2000/svg" class="chevron-down" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+       stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+  </svg>
 </section>
-
-<strong>Coming Soon...</strong>
 <section id="about">
-  <h2 class="about_title">This will be About section</h2>
+  <div class="grid_container">
+    <div class="about_image">
+      <img src="img/about.svg" alt="About me" class="about_image--svg"/>
+    </div>
+    <div class="about_text">
+      <h2 class="about_text-title">About me...</h2>
+      <p class="about_text--paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Animi at autem consequatur dicta dolor eius, fuga fugiat illo incidunt inventore iusto libero
+        molestias, nostrum odio pariatur ratione, temporibus vel veniam.
+        <br>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eius hic laudantium modi nihil pariatur
+        tempora, temporibus tenetur veritatis voluptas! Consequuntur cumque eaque facere incidunt nesciunt repellendus
+        tempore vel voluptas?
+      </p>
+    </div>
+  </div>
+  <svg xmlns="http://www.w3.org/2000/svg" class="chevron-down" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+       stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+  </svg>
 </section>
 
 <section id="projects">
-  <h2 class="projects_title">This will be Projects section</h2>
+  <h2 class="projects_title">Projects...</h2>
+
+  <ul class="projects_timeline">
+
+    <!-- Item 1 -->
+    <li>
+      <div class="direction-r">
+
+          <span class="flag">Freelancer</span>
+
+        <div class="desc">My current employment. Way better than the position before!</div>
+      </div>
+    </li>
+
+    <!-- Item 2 -->
+    <li>
+      <div class="direction-l">
+          <span class="flag">Apple Inc.</span>
+        <div class="desc">My first employer. All the stuff I've learned and projects I've been working on.</div>
+      </div>
+    </li>
+
+    <!-- Item 3 -->
+    <li>
+      <div class="direction-r">
+
+          <span class="flag">Harvard University</span>
+
+        <div class="desc">A description of all the lectures and courses I have taken and my final degree?</div>
+      </div>
+    </li>
+
+    <!-- Item 4 -->
+    <li>
+      <div class="direction-l">
+        <span class="flag">Apple Inc.</span>
+        <div class="desc">My first employer. All the stuff I've learned and projects I've been working on.</div>
+      </div>
+    </li>
+
+  </ul>
+  <svg xmlns="http://www.w3.org/2000/svg" class="chevron-down" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+       stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+  </svg>
 </section>
 
 <section id="contact">
