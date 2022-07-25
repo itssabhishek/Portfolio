@@ -265,7 +265,7 @@ section {
   background-color: #222222;
   color: #ffffff;
   display: grid;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto 60vh auto;
 }
 
 .projects_title {
@@ -281,7 +281,8 @@ section {
 .projects_timeline {
   position: relative;
   width: 100%;
-  height: 80vh;
+  top: 10px;
+  /*padding: 0 0 0 6rem;*/
 }
 
 /*  Line  */
@@ -290,8 +291,8 @@ section {
   position: absolute;
   display: block;
   width: 8px;
-  height: inherit;
-  top: 0;
+  height: 100%;
+top: 0;
   left: calc(50% - 4px);
   background-color: var(--color-primary-darker);
   border-radius: 10px;
@@ -300,7 +301,6 @@ section {
 /*  List container  */
 li {
   list-style-type: none;
-  margin: 2rem 0;
   position: relative;
 }
 
@@ -323,9 +323,9 @@ li::after {
 /*  Left container  */
 .direction-l {
   position: relative;
-  left: 30%;
+  left: 15%;
   top: 1.5rem;
-  width: 300px;
+  /*width: 300px;*/
 }
 
 /*  Left container arrow */
@@ -335,7 +335,7 @@ li::after {
   width: 15px;
   height: 20px;
   top: 10px;
-  left: 82%;
+  left: 29%;
   transform: rotate(45deg);
   background-color: #ffffff;
 }
@@ -343,9 +343,9 @@ li::after {
 /*  Right container  */
 .direction-r {
   position: relative;
-  left: 53%;
+  left: 55%;
   top: 1.5rem;
-  width: 300px;
+  /*width: 300px;*/
 }
 
 /*  Right container arrow */
@@ -361,26 +361,105 @@ li::after {
 }
 
 
-.flag{
+/*Title of project*/
+.flag {
   background-color: #ffffff;
   color: #222222;
   padding: 1rem 3rem;
   font-size: 2rem;
 }
 
-.direction-l .flag{
-margin-left: 10rem;
+/*Title of left container*/
+.direction-l .flag {
+  margin-left: 10rem;
+  text-align: right;
 }
 
-
-.desc{
+/* Description of project*/
+.desc {
   font-size: 1.5rem;
-  width: 250px;
+ width: 30%;
+}
+
+
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+
+#contact{
+  height: 80vh;
+}
+
+.contact_image--svg{
+  margin-top: 2rem;
+}
+.contact_text-title{
+  font-size: 5rem;
+}
+
+.contact_form{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  row-gap: 1rem;
+}
+
+.contact_form-input{
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+}
+
+
+
+.contact_form-input > input {
+  font-family: inherit;
+  font-size: inherit;
+  height: 3rem;
+}
+
+.contact_form-input--message{
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.contact_form-submit{
+  height: 4rem;
+  font-family: inherit;
+  font-size: 2rem;
+  background-image: var(--gradient-secondary);
+border: none;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px;
+  transition:all .4s;
+}
+
+.contact_form-submit:active{
+  box-shadow: none;
+  transform: translateY(4px);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+#footer{
+  background-color: #222222;
+color: #555555;
+  height: 20vh;
+padding: 3rem;
+  text-align: center;
 
 }
-  /* ==========================================================================
-     Helper classes
-     ========================================================================== */
+
+.footer_image{
+  height: 30px;
+  width: 30px;
+  margin-bottom: 2rem;
+}
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
 
 .grid_container {
   display: grid;
