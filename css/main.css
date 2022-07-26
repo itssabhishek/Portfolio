@@ -132,7 +132,7 @@ section {
   padding: 3rem;
   border-top: 1px solid #ddd;
   transition: transform 1s, opacity 1s;
-  height: 100vh;
+  height: calc(100vh);
 }
 
 
@@ -160,7 +160,17 @@ section {
   height: 50px;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 
+}
+
+.navbar.sticky {
+  position: fixed;
+  background-color: #222222;
+  z-index: 11;
+  left: 0;
+  top: 0;
+  padding: 0 3rem;
 }
 
 .navbar_logo {
@@ -215,6 +225,7 @@ section {
   width: 30px;
   margin: 10rem auto 0;
   animation: wobble 2s ease infinite;
+  cursor: pointer;
 }
 
 @keyframes wobble {
@@ -292,7 +303,7 @@ section {
   display: block;
   width: 8px;
   height: 100%;
-top: 0;
+  top: 0;
   left: calc(50% - 4px);
   background-color: var(--color-primary-darker);
   border-radius: 10px;
@@ -378,7 +389,7 @@ li::after {
 /* Description of project*/
 .desc {
   font-size: 1.5rem;
- width: 30%;
+  width: 30%;
 }
 
 
@@ -386,30 +397,30 @@ li::after {
    Contact
    ========================================================================== */
 
-#contact{
+#contact {
   height: 80vh;
 }
 
-.contact_image--svg{
+.contact_image--svg {
   margin-top: 2rem;
 }
-.contact_text-title{
+
+.contact_text-title {
   font-size: 5rem;
 }
 
-.contact_form{
+.contact_form {
   display: flex;
   flex-direction: column;
   width: 50%;
   row-gap: 1rem;
 }
 
-.contact_form-input{
+.contact_form-input {
   display: flex;
   flex-direction: column;
   font-size: 2rem;
 }
-
 
 
 .contact_form-input > input {
@@ -418,23 +429,23 @@ li::after {
   height: 3rem;
 }
 
-.contact_form-input--message{
+.contact_form-input--message {
   font-family: inherit;
   font-size: inherit;
 }
 
-.contact_form-submit{
+.contact_form-submit {
   height: 4rem;
   font-family: inherit;
   font-size: 2rem;
   background-image: var(--gradient-secondary);
-border: none;
+  border: none;
   cursor: pointer;
   box-shadow: 2px 2px 5px;
-  transition:all .4s;
+  transition: all .4s;
 }
 
-.contact_form-submit:active{
+.contact_form-submit:active {
   box-shadow: none;
   transform: translateY(4px);
 }
@@ -443,20 +454,21 @@ border: none;
    Footer
    ========================================================================== */
 
-#footer{
+#footer {
   background-color: #222222;
-color: #555555;
+  color: #555555;
   height: 20vh;
-padding: 3rem;
+  padding: 3rem;
   text-align: center;
 
 }
 
-.footer_image{
+.footer_image {
   height: 30px;
   width: 30px;
   margin-bottom: 2rem;
 }
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
