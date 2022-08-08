@@ -24,6 +24,8 @@
   <link rel="stylesheet" href="css/main.css">
 
   <meta name="theme-color" content="#fafafa">
+
+  <script defer src="./js/index.js"></script>
 </head>
 
 <body>
@@ -48,7 +50,7 @@
         <span>,</span><br> <span style="font-weight: initial;font-style: italic">I am</span><br> Abhishek</h1>
     </div>
     <div class="header_image">
-        <img data-src="./img/hi_character.svg" src="img/hi_character.png" alt="Header_img" class="header_image--svg"/>
+      <img data-src="./img/hi_character.svg" src="img/hi_character.png" alt="Header_img" class="header_image--svg"/>
     </div>
   </header>
   <svg xmlns="http://www.w3.org/2000/svg" class="chevron-down" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -138,22 +140,22 @@
 
     <div class="contact_container">
       <h2 class="contact_text-title">Contact me...</h2>
-      <form action="" class="contact_form">
+      <form onsubmit="formSubmitHandler()" class="contact_form">
         <div class="contact_form-input">
           <label for="name">Your name: </label><input type="text" name="name" id="name"
-                                                      class="contact_form-input--name"/>
+                                                      class="contact_form-input--name" required/>
         </div>
         <div class="contact_form-input">
           <label for="email">Your email: </label><input type="email" name="email" id="email"
-                                                        class="contact_form-input--email"/>
+                                                        class="contact_form-input--email" required/>
 
         </div>
         <div class="contact_form-input">
-          <label for="message">Message: </label><textarea rows="5"  name="email" id="message"
+          <label for="message">Message: </label><textarea rows="5" name="email" id="message"
                                                           class="contact_form-input--message"></textarea>
 
         </div>
-        <button type="reset" class="contact_form-submit">Send</button>
+        <button type="submit" class="contact_form-submit">Send</button>
       </form>
     </div>
   </div>
@@ -164,7 +166,6 @@
   <p class="footer_copyright">&copy; Designed and created by Abhishek Tiwari.<br>Do not claim as yours.</p>
 </footer>
 
-<script src="./js/index.js"></script>
 </body>
 
 </html>

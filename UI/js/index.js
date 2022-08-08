@@ -7,8 +7,15 @@ const aboutSection = document.getElementById('about');
 const projectsSection = document.getElementById('projects');
 const contactSection = document.getElementById('contact');
 const navbar = document.querySelector('.navbar');
+const formUserName = document.getElementById('name');
+const formUserEmail = document.getElementById('email');
+const formUserMessage = document.getElementById('message');
 
-//Scroll using chevron
+
+/*********************************************************************************************
+ Scroll using chevron
+ ********************************************************************************************/
+
 chevron.forEach((el, index) => {
 
   el.addEventListener('click', function (e) {
@@ -31,25 +38,33 @@ chevron.forEach((el, index) => {
   });
 })
 
+/*********************************************************************************************
+ Page navigation
+ ********************************************************************************************/
 
-// Page navigation
+/*
 
-// Not efficient
+//Not efficient
 
-// document.querySelectorAll('.nav__link').forEach(function (el) {
-//   el.addEventListener('click', function (e) {
-//     e.preventDefault();
-//     const id = this.getAttribute('href');
-//     console.log(id);
-//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-//   });
-// });
+document.querySelectorAll('.nav__link').forEach(function (el) {
+  el.addEventListener('click', function (e) {
+    e.preventDefault();
+    const id = this.getAttribute('href');
+    console.log(id);
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+
+*/
+
 
 // Efficient method
 
-// 1. Add event listener to common parent element
-// 2. Determine what element originated the event
-
+/*
+1. Add event listener to common parent element
+2. Determine what element originated the event
+*/
 document.querySelector('.navbar_links').addEventListener('click', function (e) {
   e.preventDefault();
 
@@ -61,7 +76,10 @@ document.querySelector('.navbar_links').addEventListener('click', function (e) {
   }
 });
 
-// Changing Navigation button's color according to section into view
+/*********************************************************************************************
+ Changing Navigation button's color according to section into view
+ ********************************************************************************************/
+
 function changeActiveLink(entries) {
   const [entry] = entries;
 
@@ -81,7 +99,10 @@ const sectionObserver = new IntersectionObserver(changeActiveLink, {
 
 [homeSection, aboutSection, projectsSection, contactSection].forEach(section => sectionObserver.observe(section))
 
-// Sticky navigation: Intersection Observer API
+/*********************************************************************************************
+ Sticky navigation: Intersection Observer API
+ ********************************************************************************************/
+
 const stickyNav = function (entries) {
   const [entry] = entries;
   // console.log(entry);
@@ -94,7 +115,10 @@ const headerObserver = new IntersectionObserver(stickyNav, {
 
 headerObserver.observe(homeSection);
 
-// Lazy loading images
+/*********************************************************************************************
+ Lazy loading images: Intersection Observer API
+ ********************************************************************************************/
+
 const imgTargets = document.querySelectorAll('img[data-src]');
 
 const loadImg = function (entries, observer) {
@@ -113,14 +137,79 @@ const imgObserver = new IntersectionObserver(loadImg, {
 
 imgTargets.forEach(img => imgObserver.observe(img));
 
+/***************************************************************************************************
+ * Generating Modals
+ * @param acknowledged {boolean}
+ * @param message {string}
+ * @returns {HTMLElement <void>}
+ ***************************************************************************************************/
 
-async function submitForm(data) {
-  const response = fetch('http://localhost:5000/addEntry', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
+// Modal function
+const modalCreator = (acknowledged, message) => {
+
+  //Check Icon
+  const checkIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="modal-message--icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+         stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+    </svg>`
+  //Error icon
+  const errorIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="modal-message--icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+         stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+    </svg>`
+
+  //Modal div
+  const modal = `
+        <div id="myModal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <div class="modal_message" style='color: ${acknowledged ? "green" : "red"}'>
+            ${!acknowledged ? errorIcon : checkIcon}
+            <p style="font-size: 2rem">${message}</p>
+            </div>
+          </div>
+        </div>`
+
+
+  // Insert Modal into body
+  document.body.insertAdjacentHTML('afterbegin', modal);
+
+  //Remove modal automatically after 3s
+  setTimeout(() => {
+    const insertedModalID = document.getElementById('myModal');
+    insertedModalID.remove();
+  }, 3000)
+}
+
+/*****************************************************************************************************
+ * Main function to submit message
+ * @returns {Promise<void>}
+ * ***************************************************************************************************/
+
+async function formSubmitHandler() {
+  //Preventing default browser reload
+  event.preventDefault();
+
+  //Creating data
+  const data = {
+    name: formUserName.value, email: formUserEmail.value, message: formUserMessage.value,
+  }
+
+  //Fetching addMessage API
+  const response = await fetch('https://portfolio-backend-api-v1.herokuapp.com/addMessage', {
+    method: 'POST', headers: {
+      'Content-Type': 'application/json',
+    }, body: JSON.stringify(data)
   })
-  return response.json();
+
+  //Destructuring response object
+  const {acknowledged} = await response.json();
+
+  //Calling modal function according to response got from server
+  acknowledged ? modalCreator(true, 'Message sent🎉') : modalCreator(false, "There's some issue. Please try again😒")
+
+  // Resetting form Inputs
+  formUserName.value = "";
+  formUserEmail.value = "";
+  formUserMessage.value = "";
 }
